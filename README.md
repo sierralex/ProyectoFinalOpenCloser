@@ -29,6 +29,7 @@ El programa contara con un temporizador el cual esta configurado en un milisegun
         public static Timer t = new Timer(Metodo2, null, 0, 1000);
 
 ```
+Se crea el Metodo2 el cual nos ayudara asolicitar desde la url para que nos traiga la informacion de esta y poderla validar con la aplicacion
 ```
 private static void Metodo2(object state)
         {
@@ -87,6 +88,9 @@ private static void Metodo2(object state)
         {
         }
 
+```
+En esta parte crearemos un while para que el hash que se cree este contenga 4 ceros al inicio 
+```
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         //[HttpGet]
         public JsonResult ObtenerInfoBloque(string idBloque, string data, string hashPreview)
@@ -114,11 +118,25 @@ private static void Metodo2(object state)
         }
 
 ```
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## Construido con 🛠️
 
-Please make sure to update tests as appropriate.
+* Visual studio - Programa en el cual se desarrollo
+* [Url](https://api.etherscan.io/api?module=block&action=getblockreward&blockno=2165403&apikey=V7Q5WWCFZWJP18SE9Z7U8C7C5NJDHHT7YC) - Utilizo esta api con el fin de validar el funcionamiento
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+## Wiki 📖
+
+Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/https://github.com/sierralex/ProyectoFinalOpenCloser//wiki)
+
+
+
+
+## Autores ✒️
+
+
+* **Brayan Salas** - *Trabajo Inicial* - [bsalas](https://github.com/villanuevand)
+* **David Vigues** - *Documentación y trabajo inicial* - [dvilgues](https://github.com/dvilgues)
+* **Alexander Sierra** - *Trabajo inicialn* - [sierralex](https://github.com/sierralex)
+* **Juan Sanchez** - *Documentación* - [jsanche](https://github.com/jsanche)
+* **Greys leon** - *Documentación* - [gleon](https://github.com/gleon)
+
 
