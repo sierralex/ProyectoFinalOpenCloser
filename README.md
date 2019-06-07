@@ -55,41 +55,34 @@ private static void Metodo2(object state)
             StreamReader reader = new StreamReader(response.GetResponseStream());
             
 ```
+Metodos de generar hash el cual calcula un hash apartir del string, luego realiza la conversion a hexadecimal y lo retorna
 ```
- resp = reader.ReadToEnd();
 
-            return new JsonResult() { Data = resp, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-        }
+   // Primeiro passo, calcular o MD5 hash a partir da string
+            SHA256 sha256 = System.Security.Cryptography.SHA256.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(textHash);
+            byte[] hash = sha256.ComputeHash(inputBytes);
 
-        // GET api/values
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+            // Segundo passo, converter o array de bytes em uma string haxadecimal
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString();
 
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value" + id;
-        }
+            //var msg = Encoding.ASCII.GetBytes(textHash);
+            //var sha = new SHA256Managed();
+            //var hash = sha.ComputeHash(msg);
+            //string nuevoHash = "";
+            //foreach (char b in hash)
+            //{
+            //    nuevoHash += b.ToString();
+            //}
 
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
 
 ```
-En esta parte crearemos un while para que el hash que se cree este contenga 4 ceros al inicio 
+En esta parte recibimos 3 parametros el cual los concatena y pasa al metodo generar hash, donde valida que tenga los cuatro ceros iniciales, si este no los contiene este se vulve a concatenar hasta que cumpla los parametros 
 ```
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         //[HttpGet]
@@ -128,8 +121,6 @@ En esta parte crearemos un while para que el hash que se cree este contenga 4 ce
 Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/https://github.com/sierralex/ProyectoFinalOpenCloser//wiki)
 
 
-
-
 ## Autores ✒️
 
 
@@ -138,5 +129,13 @@ Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](ht
 * **Alexander Sierra** - *Trabajo inicialn* - [sierralex](https://github.com/sierralex)
 * **Juan Sanchez** - *Documentación* - [jsanche](https://github.com/jsanche)
 * **Greys leon** - *Documentación* - [gleon](https://github.com/gleon)
+
+## Expresiones de Gratitud 🎁
+
+* Comenta a otros sobre este proyecto  talvez les pueda interesar 📢
+* Invita una cerveza 🍺 a alguien del equipo con el fin de platicar. 
+* Da las gracias públicamente 🤓 para animarnos a subir muchisimos mas :).
+* etc.
+
 
 
